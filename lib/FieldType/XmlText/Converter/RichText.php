@@ -339,6 +339,16 @@ class RichText implements Converter
                 if ($this->addXhtmlClassValue($node, 'ez-embed-type-image')) {
                     ++$count;
                 }
+                foreach ($node->childNodes as $childNode) {
+                    if ($childNode->tagName === 'ezlink') {
+                        $this->removeXhtmlClassValue($node, 'is_linked');
+                        $this->addXhtmlClassValue($node, 'is-linked');
+                        $node->removeChild($childNode);
+                        $node->appendChild($childNode);
+                        ++$count;
+                        break;
+                    }
+                }
             } else {
                 if ($this->removeXhtmlClassValue($node, 'ez-embed-type-image')) {
                     ++$count;
