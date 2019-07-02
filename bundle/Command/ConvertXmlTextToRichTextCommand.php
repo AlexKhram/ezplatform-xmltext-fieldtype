@@ -450,7 +450,7 @@ EOT
                     );
                 }
             }
-            $this->progressBarAdvance($offset);
+            $this->progressBarAdvance(self::MAX_OBJECTS_PER_CHIL);
             $offset += self::MAX_OBJECTS_PER_CHILD;
         } while ($offset + self::MAX_OBJECTS_PER_CHILD <= $count);
         $this->progressBarFinish();
